@@ -1,0 +1,131 @@
+Linux commands can be categorised into
+
+1. File management commands--------------touch, ls , ls -h ,ls -d ( list dir themselves)
+2. File permission commands
+3. user management
+4. Process management
+5. Storage
+6. Network management
+7. Package management
+
+
+
+cat /etc/os-release ----- used to show what type of os you are using
+
+. --- means current directory
+mkdir -p dir1/dir2/dir3 -----p is for parent
+mkdir -pv p1/p2/p3 -- pv is parent verbose
+
+----------------------------------------------------------------------------
+more ------ used to show the data in a single page ---- more filename(command)
+
+less ------ used to show the data detailed file exploration especially with larger files----- less filename(command)
+
+------------------------------------------------------------------------------
+
+*** Head and Tail command *** 
+
+head filename --- shows 1 to 10 lines
+
+tail filename --- shows bottom 10 lines
+gr
+
+
+vi file1 
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+To show a specific number ---------- head -2 file1 | tail -1 ------- shows answer 2
+
+To show more than 2 numbers ------- head -12 file1 | tail -3 -------- shows answer 10 11 12
+
+To delete the data in the file (f1) without using the vi command use  
+
+	>filename(f1) ------- used to delete the data
+ 
+ 	truncate -s 0 filename (f1)------ used to delete the data
+
+
+**Steam editor ** sed
+---------------------
+
+1. -n ---- used for printing
+2. -i ---- used for deleting and substitution
+
+3. s------ substitute
+4. g ------ global
+
+sed -n '$p' f1 ----- used to print only last  number
+sed -i '1,4d' f1 ---- deletes from 1 to 4
+sed -i '$d' f1 ----- deletes the last line
+
+sed -i 's/sujan/Anvesh/g' filename ------- changes from sujan to Anvesh 
+    
+vi f1
+ 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+head -3 f1 --- shows  as output 1 2 3
+sed -n "1,3p" f1----- shows 3 lines
+sed -n "1,8p" f1 ---- shows 8 lines
+6th to 10th line ---- head -10 f1 |tail -5----- shows 6 to 10 
+
+
+--------------------------------------------------------------------------------
+
+*** grep command *** 
+
+v1 f1 
+ sujan
+ SUJAN
+ anvesh
+ ANVESH
+ varshini12
+
+-i ----- used to ignore case sensitive
+-n ----- used to show the line number 
+-o ------used to show only the given name
+-v ----- It will show all the lines excluding all the match patterns
+wc ----- stands for word count
+wc -l f1 ---- used to show number of lines
+wc -c f1----- used to count number of characters
+wc -w f1 ----- used to show number of words 
+
+grep "sujan" f1 -------- shows only sujan
+
+grep -i "sujan" f1 ------- shows both sujan and SUJAN 
+
+grep -n "sujan" f1 ------- shows 1:sujan
+
+grep -o "sujan" f1 ------- shows only exact name sujan
+
+grep -in "sujan" f1 ------ shows 1:sujan and 2:SUJAN
+
+grep -v "sujan" f1>new(f2) ---- excludes all matching and show remaining in a newfile
+
+	eg: sujan
+	    SRUJAN
+	    sujan
+   	    SUJAN
+ 	    anvesh
+	    ANVESH
+ 	    varshini12
+

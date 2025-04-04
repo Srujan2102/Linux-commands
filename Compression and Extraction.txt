@@ -1,0 +1,224 @@
+Compression and Extraction
+
+
+zip file ----- used to compress the size
+
+zip categories
+1.  multiple files
+2. file plus dir(empty)
+3. files plus non empty 
+4. for non empty ---- use -r
+
+
+------------------------------------------------------
+
+
+touch f1 f2 
+ls ---- f1 f2
+
+vi f1 
+
+jfls
+sldkdfj
+dfkkjs
+fdls
+
+cp f1 f2
+
+cat f1----------jfls
+		sldkdfj
+		dfkkjs
+		fdls
+
+cat f2----------jfls
+		sldkdfj
+		dfkkjs
+		fdls
+clear
+
+apt install zip -y
+
+zip myfile.zip f1 f2 
+
+ls ----- f1 f2 myfile.zip 
+
+ls -l ------- whether it is dir or file 
+
+clear
+
+rm f1 f2
+
+ls----- myfile.zip 
+
+unzip myfile.zip 
+
+ls ------ f1 f2 myfile.zip
+
+cat f1----------jfls
+		sldkdfj
+		dfkkjs
+		fdls
+
+cat f2----------jfls
+		sldkdfj
+		dfkkjs
+		fdls
+clear
+
+rm myfile.zip 
+
+ls ------- f1 f2 
+
+
+
+
+mkdir d1 d2
+
+ls------ d1 d2 f1 f2 
+
+zip sujanfile.zip d1 d2 f1 f2 
+
+ls ------- d1 d2 f1 f2 sujanfile.zip
+
+clear
+
+rmdir d1 d2
+
+rm f1 f2 
+
+ls ----sujanfile.zip
+
+unzip sujanfile.zip
+
+ls-------- d1 d2 f1 f2 sujanfile.zip
+
+
+
+
+mkdir d3 d4 
+
+cd d3
+
+touch f3 f4
+
+cd ..
+
+cd d4 
+
+touch f5 f6 
+
+ls ---- f5 f6 
+
+tree 
+	* d1
+	* d2
+	* d3
+	   *f3
+	   *f4
+	* d4
+	   *f5
+	   *f6
+	* f1
+	* f2
+	* sujanfile.zip
+
+zip -r sujan.zip d1 d2 d3 d4 ------ used for non empty directories only
+
+ls ------- d1 d2 d3 d4 f1 f2 sujan.zip sujanfile.zip
+
+--------------------------------------------------------------------------------
+
+Tar and gzip ---- used for advanced compression 
+
+
+gzip ----- used for only file compression 
+
+command ----- tar myfile.tar f1 
+
+-cvf ----compressed verbose file/folder
+
+-xvf ---- extract verbose file/folder
+------------------------------------------------------------------------------
+
+touch f1 f2 f3 f4 ----------  for creating files
+
+vi f1 
+ 
+	jfls
+	sldkdfj
+	dfkkjs
+	fdls
+
+cp f1 f2
+cp f1 f3
+cp f1 f4
+
+ls -l -------- shows the size 
+
+ls -lh -------- shows in kb's
+
+tar -cvf myfile1.tar f*
+	f1
+	f2
+	f3
+	f4
+
+ls -l ---- shows again the size  (myfile1.tar)
+
+gzip myfile1.tar
+ 
+ls -l  ------(myfile1.tar.gz)
+
+rm f*
+
+ls ----- shows (myfile1.tar.gz)
+
+tar -xvf myfile1.tar.gz--------- shows all the extracted files
+
+ls ------- shows all files
+
+	f1 f2 f3 f4 myfile1.tar.gz
+
+
+
+
+
+
+mkdir d1 d2 d3 d4 ------- for creating directories
+
+cp f* d1
+cp f* d2
+cp f* d3
+cp f* d4
+
+tree ----- shows in a tree format
+
+tar -cvf myfile2.tar f* d* ---------- compresses all files and directories
+
+ls -l -------- shows all files and dir ( myfile2.tar) 
+
+gzip myfile2.tar
+
+ls -l --------- shows all the files and dir  (myfile2.tar.gz)
+
+ls -lh ---------- shows in kb's 
+
+
+rm f* 
+
+rm -rf d* 
+
+ls --------- shows these files (myfile1.tar.gz  myfile2.tar.gz)
+
+mkdir sujan1
+
+cp myfile2.tar.gz sujan1/
+
+cd sujan1/
+
+ls -------- shows  (myfile2.tar.gz)
+
+tar -xvf myfile2.tar.gz ------  extracts all the files and dir 
+
+ls ----- shows all files and dir 
+

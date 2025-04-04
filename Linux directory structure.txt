@@ -1,0 +1,46 @@
+Linux directory structure 
+
+windows(folders)---- Linux(directory)
+
+files --- files same 
+
+/---- super directory 
+
+cd / ---- It moves to the superdirectory
+
+ root@Srujan21:/# ls
+bin                boot  etc   init  lib.usr-is-merged  lost+found  mnt  proc  run   sbin.usr-is-merged  srv  tmp  var
+bin.usr-is-merged  dev   home  lib   lib64              media       opt  root  sbin  snap                sys  usr
+
+
+
+
+bin ------ All Linux commands work because of bin 
+
+dev--- storage purpose EBS in AWS
+
+mnt--- storage purpose
+
+home------- when you add a user a directory with same name of user is create in /home 
+
+tmp ---- directory where everyone has full access
+
+var --- used to varying the log files(changing dynamically)
+
+boot -- booting process from shutdown to available(restart)  eg; bios,master boot record, grub
+Stage 1 : BIOS ------Basic input output system
+Stage 2 : MBR ------- Master boot record
+Stage 3 : GRUB ------- Grand unified boot  loader
+Stage 4: Kernel
+Stage 5 : Init
+Stage 6 : RunLevel Programs
+
+etc --- To save configuration files---- to see the runned files we use (history command)
+when you add a user we use /etc/shadow that stores in this
+
+media---- audio and video
+
+opt--- third party applications (Jenkins master slave)
+
+/root ----home dir for the root user 
+
