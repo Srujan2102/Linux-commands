@@ -1,0 +1,134 @@
+chown command 
+*************
+
+
+ -rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:15 f1
+		|	   |
+		|	   |
+
+	  (user owner)	 (group owner)    
+
+If a normal user wants  to use sudo command he should be in sudo group
+	usermod -aG sudo Chaitanya
+
+
+root@Srujan21:~# usermod -aG sudo Chaitanya
+
+root@Srujan21:~# id chaitanya
+
+uid=1006(chaitanya) gid=1006(chaitanya) groups=1006(chaitanya),27(sudo),100(users)
+
+
+
+chaitanya@Srujan21:/root$ cd
+chaitanya@Srujan21:~$ pwd
+/home/chaitanya
+chaitanya@Srujan21:~$ ls -l
+total 0
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:15 f1
+
+
+To change user owner use -------- sudo chown root f1
+
+
+chaitanya@Srujan21:~$ sudo chown root f1
+[sudo] password for chaitanya:
+chaitanya@Srujan21:~$ ls -l
+total 0
+-rw-rw-r-- 1 root chaitanya 0 Mar 11 09:15 f1
+
+---------------------------------------------------------
+
+To change owners there are 3 categories
+
+1. changing only userowner--------- chown username filename/dir
+
+
+	root@Srujan21:~# mkdir d1
+	root@Srujan21:~# touch f1
+	root@Srujan21:~# ls
+
+	d1  f1
+
+	root@Srujan21:~# ls -l
+	total 4
+	drwxr-xr-x 2 root root 4096 Mar 24 15:24 d1
+	-rw-r--r-- 1 root root    0 Mar 24 15:24 f1
+
+	root@Srujan21:~# chown srujan d1
+	root@Srujan21:~# ls -l
+	total 4
+	drwxr-xr-x 2 srujan:root 4096 Mar 24 15:24 d1
+	-rw-r--r-- 1 root   root    0 Mar 24 15:24 f1
+	
+
+2. changing only groupowner ---- chown :username filename/dir
+
+
+	root@Srujan21:~# chown :varshini d1
+	root@Srujan21:~# ls -l
+	total 4
+	drwxr-xr-x 2 srujan:varshini 4096 Mar 24 15:24 d1
+	-rw-r--r-- 1 root   root        0 Mar 24 15:24 f1
+
+
+3. both owners  ------chown username:username filename or dir 
+
+
+
+	root@Srujan21:~# chown srujan:vaseem f1
+	root@Srujan21:~# ls -l
+	total 4
+	drwxr-xr-x 2 srujan varshini 4096 Mar 24 15:24 d1
+	-rw-r--r-- 1 srujan vaseem      0 Mar 24 15:24 f1
+
+
+ 4. chown -R username:username d1 (for non-empty dir)------ changes all files also
+-------------------------------------------------------------------------
+
+eg:
+
+
+mkdir d1
+
+cd d1
+
+touch f{1..5}
+
+cd 
+
+tree d1
+	d1
+	 *f1
+	 *f2
+	 *f3
+	 *f4
+	 *f5
+chaitanya@Srujan21:~$ ls -l
+total 4
+drwxrwxr-x 2 chaitanya chaitanya 4096 Mar 11 09:39 d1
+-rw-rw-r-- 1 root      chaitanya    0 Mar 11 09:15 f1
+
+chaitanya@Srujan21:~$ sudo chown root:root d1
+chaitanya@Srujan21:~$ ls -l
+total 4
+drwxrwxr-x 2 root root      4096 Mar 11 09:39 d1
+-rw-rw-r-- 1 root chaitanya    0 Mar 11 09:15 f1
+
+
+chaitanya@Srujan21:~$ cd d1
+chaitanya@Srujan21:~/d1$ ls -l
+total 0
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f1
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f2
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f3
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f4
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f5
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------

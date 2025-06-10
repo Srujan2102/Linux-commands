@@ -1,0 +1,1100 @@
+Linux order
+***********
+
+1. touch filename ---> used to create files
+	touch f1 f2 
+
+2. mkdir directory name ----> used to create directories
+	mkdir d1 d2
+
+	. --- means current directory
+	mkdir -p dir1/dir2/dir3 -----p is for parent
+	mkdir -pv p1/p2/p3 -- pv is parent verbose
+
+
+3. rm file or dir  ---> used to remove files and directories
+   rm * ---> used to delete all files
+
+4. rm -f file or dir --> used to remove file or dir forcefully
+   rm -f * ---> deletes all files and directories
+
+5. ls ---> used to see the list
+
+6. ls -l ----> used to see the time stamp and total 
+
+7.ls -lh ---> used to see the time stamp and size in kb's 
+
+8. cd ---> used to change the directory
+
+9. cd .. ---> used to change for one step only
+
+10. pwd ---> used to see the present working directory
+
+11. who --> used to see the current user
+
+12. whoami --> used to see the current user 
+
+13. vi filename ---> used to give the data 
+
+14. cat filename---> used to see the list of files
+
+15. tac filename --> used to see the list in reverse order
+
+-------------------------------------------------------------------------------------------------------------
+
+16. cp ---> used to copy the files and directories
+
+
+Copy command 
+
+* copy command is used to duplicate 
+	file to file
+	file to a dir
+	dir to a directory
+
+-------------------------------	
+
+****Moving file to file**** 
+
+# vi f1 
+ 1
+ 2
+ 3
+  
+ls ---- shows f1 
+pwd---- /root
+
+cp f1 f2 
+
+cat f2 
+
+1
+2
+3
+
+clear 
+
+-----------------------------------------
+
+****Moving file to a directory**** 
+
+ls ----- shows f1 f2 
+
+mkdir dir1
+
+cp f1 dir1
+
+tree dir1
+	dir1
+	* f1
+cd dir1
+	(or)
+ls--- shows f1
+
+cd .. 
+
+cp f2 dir1 
+tree dir1 
+	dir1
+	*f1
+	*f2
+------------------------------------
+
+(OR)
+
+cp f* dir1
+tree dir1 
+	dir1
+	*f1
+	*f2
+
+-------------------------------------------------------------------------------------------------------------------
+
+****Directory to a directory****
+	mkdir d1
+	touch f1 f2 f3
+	cd d1
+	touch f{1..3}
+
+1. Copying entire dir ---- cp -r sourcedir targetdir
+	
+	mkdir d2
+	cp -r d1 d2
+.
+├── d1
+│   ├── f1
+│   ├── f2
+│   └── f3
+├── d2
+│   └── d1
+│       ├── f1
+│       ├── f2
+│       └── f3
+├── f1
+├── f2
+└── f3
+
+
+2. copying only data in the directories----cp -r sourcedir/* targetdir
+
+	mkdir d3
+	cp -r d1/* d3
+	 tree
+.
+├── d1
+│   ├── f1
+│   ├── f2
+│   └── f3
+├── d2
+│   └── d1
+│       ├── f1
+│       ├── f2
+│       └── f3
+├── d3
+│   ├── f1
+│   ├── f2
+│   └── f3
+├── f1
+├── f2
+└── f3
+	
+3. Copying specific file in the directory ---cp -r sd/filename td
+
+	if we want to copy the f3 in d2
+
+		mkdir d1 d2 d3
+		cd d1
+		touch f1
+		cd
+		cd d3
+		touch f2 f3 f4
+		cd
+		cp -r d3/f3 d2
+		tree .
+		
+├── d1
+│   └── f1
+├── d2
+│   └── f3
+└── d3
+    ├── f2
+    ├── f3
+    └── f4
+
+		here we use the tree command to see the data
+
+---------------------------------------------------------------------------------------------------------------
+		
+	
+17. tree ----> used too see all files and directories by using tree command
+
+18. mv ---> used to move or rename the file 
+
+19. cat >filename ---> used to enter the data with out entering in to the vi editor 
+
+20. cat>filename ---used to change and edit the data and the previous data will be lost
+
+21. cat>>filename -- used to add data and doesnot not remove previous data
+
+22. more filename ------ used to show the data in a single page
+
+23. less filename------ used to show the data detailed file exploration especially with larger files
+
+24. cat /etc/shadow -----> used to show all users
+
+25. cat /etc/shadow | grep "username" ------ It will show the particular username
+
+26. cat /etc/os-release ----- used to show what type of os you are using
+
+27. cat /etc/gshadow ----> used to see the list of groups
+
+28. groupadd g1  ---> used to add a new group at the time we can add only one group only
+
+29. cat /etc/gshadow |grep "groupname" ----> It will show particular group name
+
+30. usermod -g groupname username -----> It will add the group to the username for primary changes only
+
+31. usermod -aG groupname username -----> it will add to the secondary groups
+
+32. userdel username -----> used to delete the user but it does not delete in the /home directory
+
+33. userdel -r username ---> used to delete the user permanently in /home directory also
+
+34. groupdel groupname ----> used to delete the group permanently in the user and groups also
+
+35. gpasswd -d username groupname ------  used to delete the group  in the secondary group
+
+
+
+
+-----------------------------------------------------------------------------------------------
+
+copying multiple files
+**********************
+
+If you want to copy multiple file data to another file use ------- cat (source)filesnames > newfilename(targetfile)
+	touch f{1..5}
+	vi f1 
+	 * 1
+	 * 2
+	 * 3
+	
+	cp f1 f2
+	cp f1 f3
+	cp f1 f4
+	cp f1 f5
+
+*  cat f1 f2 f3 f4 > f5 ------ It is used to copy multiple files to new file but it deletes the data of f5
+*  cat f1 f2 f3 f4 >>f5 ------ It is used to copy multiple files to new file and also doesnot deletes the data of f5
+
+---------------------------------------------------------------------------------------------------------
+
+Linux directory structure  
+*************************
+
+
+Linux directory structure 
+
+windows(folders)---- Linux(directory)
+
+files --- files same 
+
+/---- super directory 
+
+cd / ---- It moves to the superdirectory
+
+ root@Srujan21:/# ls
+bin                boot  etc   init  lib.usr-is-merged  lost+found  mnt  proc  run   sbin.usr-is-merged  srv  tmp  var
+bin.usr-is-merged  dev   home  lib   lib64              media       opt  root  sbin  snap                sys  usr
+
+
+
+
+bin ------ All Linux commands work because of bin 
+
+dev--- storage purpose EBS in AWS
+
+mnt--- storage purpose
+
+home------- when you add a user a directory with same name of user is create in /home 
+
+tmp ---- directory where everyone has full access
+
+var --- used to varying the log files(changing dynamically)
+
+boot -- booting process from shutdown to available(restart)  eg; bios,master boot record, grub
+Stage 1 : BIOS ------Basic input output system
+Stage 2 : MBR ------- Master boot record
+Stage 3 : GRUB ------- Grand unified boot  loader
+Stage 4: Kernel
+Stage 5 : Init
+Stage 6 : RunLevel Programs
+
+etc --- To save configuration files---- to see the runned files we use (history command)
+when you add a user we use /etc/shadow that stores in this
+
+media---- audio and video
+
+opt--- third party applications (Jenkins master slave)
+
+/root ----home dir for the root user 
+
+
+-----------------------------------------------------------------------------------------------------
+Linux commands can be categorised into
+
+1. File management commands--------------touch, ls , ls -h ,ls -d ( list dir themselves)
+2. File permission commands --------chmod, chown,
+3. user management ---- adduser, useradd,groupadd, userdel , groupdel ,usermod
+4. Process management 
+5. Storage 
+6. Network management
+7. Package management
+
+
+
+. --- means current directory
+mkdir -p dir1/dir2/dir3 -----p is for parent
+mkdir -pv p1/p2/p3 -- pv is parent verbose
+
+-------------------------------------------------------------------------------------------------------
+
+Head and tail commands 
+**********************
+
+head filename --- shows 1 to 10 lines
+
+tail filename --- shows bottom 10 lines
+
+	* To show a specific number ---------- head -2 file1 | tail -1 ------- shows answer 2
+
+	* To show more than 2 numbers ------- head -12 file1 | tail -3 -------- shows answer 10 11 12
+	
+	* head -3 f1 --- shows  as output 1 2 3
+
+	* 6th to 10th line ---- head -10 f1 |tail -5----- shows 6 to 10 
+
+	* To delete the data in the file (f1) without using the vi command use  
+
+		>filename(f1) ------- used to delete the data
+ 
+ 		truncate -s 0 filename (f1)------ used to delete the data
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+Steam editor ----------->sed
+**********************
+
+1. -n ---- used for printing
+2. -i ---- used for deleting and substitution
+3. -e ---- it is an expression to shows particular numbers
+
+3. s------ substitute
+4. g ------ global
+
+    
+vi f1
+ 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+sed -n "1,3p" f1----- shows 3 lines
+sed -n "1,8p" f1 ---- shows 8 lines
+sed -n '$p' f1 ----- used to print only last  number
+sed -i '1,4d' f1 ---- deletes from 1 to 4
+sed -i '$d' f1 ----- deletes the last line
+sed -n 'p' f1  -----> prints all numbers
+
+
+sed -n -e '2p' -e '5p' filename  ----> prints 2 and 5 only
+sed -i -e '2d' -e '5d' filename ----> deletes 2 and 5 only
+sed -i 's/sujan/Anvesh/g' filename ------- changes from sujan to Anvesh 
+sed -i 's/^3$/sujan/g' filename ---> used to change in the place of 3 only
+
+
+---------------------------------------------------------------------------------------------------------------
+grep command 
+************
+
+v1 f1 
+ sujan
+ SUJAN
+ anvesh
+ ANVESH
+ varshini12
+
+-i ----- used to ignore case sensitive
+-n ----- used to show the line number 
+-o ------used to show only the given name
+-v ----- It will show all the lines excluding all the match patterns
+wc ----- stands for word count
+wc -l f1 ---- used to show number of lines
+wc -c f1----- used to count number of characters
+wc -w f1 ----- used to show number of words 
+
+grep "sujan" f1 -------- shows only sujan
+
+grep -i "sujan" f1 ------- shows both sujan and SUJAN 
+
+grep -n "sujan" f1 ------- shows 1:sujan
+
+grep -o "sujan" f1 ------- shows only exact name sujan
+
+grep -in "sujan" f1 ------ shows 1:sujan and 2:SUJAN
+
+grep -v "sujan" f1>new(f2) ---- excludes all matching and show remaining in a newfile
+
+grep -iv "sujan" f1 -----> excludes all sujan and prints all remaining files
+
+	eg: sujan
+	    SRUJAN
+	    sujan
+   	    SUJAN
+ 	    anvesh
+	    ANVESH
+ 	    
+
+-------------------------------------------------------------------------------------------------------------
+
+Compression and Extraction
+**************************
+
+
+zip file ----- used to compress the size
+
+zip categories
+1.  multiple files
+2. file plus dir(empty)
+3. files plus non empty 
+4. for non empty ---- use -r
+
+-------------------------------------------------
+
+Procedure for zip compression
+*****************************
+
+touch f1 f2 
+ls ---- f1 f2
+
+vi f1 
+
+jfls
+sldkdfj
+dfkkjs
+fdls
+
+cp f1 f2
+
+cat f1----------jfls
+		sldkdfj
+		dfkkjs
+		fdls
+
+cat f2----------jfls
+		sldkdfj
+		dfkkjs
+		fdls
+clear
+
+apt install zip -y
+
+zip myfile.zip f1 f2 
+
+ls ----- f1 f2 myfile.zip 
+
+ls -l ------- whether it is dir or file 
+
+clear
+
+rm f1 f2
+
+ls----- myfile.zip 
+
+unzip myfile.zip 
+
+ls ------ f1 f2 myfile.zip
+
+cat f1----------jfls
+		sldkdfj
+		dfkkjs
+		fdls
+
+cat f2----------jfls
+		sldkdfj
+		dfkkjs
+		fdls
+clear
+
+rm myfile.zip 
+
+ls ------- f1 f2 
+
+
+
+
+mkdir d1 d2
+
+ls------ d1 d2 f1 f2 
+
+zip sujanfile.zip d1 d2 f1 f2 
+
+ls ------- d1 d2 f1 f2 sujanfile.zip
+
+clear
+
+rmdir d1 d2
+
+rm f1 f2 
+
+ls ----sujanfile.zip
+
+unzip sujanfile.zip
+
+ls-------- d1 d2 f1 f2 sujanfile.zip
+
+
+
+
+mkdir d3 d4 
+
+cd d3
+
+touch f3 f4
+
+cd ..
+
+cd d4 
+
+touch f5 f6 
+
+ls ---- f5 f6 
+
+tree 
+	* d1
+	* d2
+	* d3
+	   *f3
+	   *f4
+	* d4
+	   *f5
+	   *f6
+	* f1
+	* f2
+	* sujanfile.zip
+
+zip -r sujan.zip d1 d2 d3 d4 ------ used for non empty directories only
+
+ls ------- d1 d2 d3 d4 f1 f2 sujan.zip sujanfile.zip
+
+--------------------------------------------------------------------------------
+
+Tar and gzip ---- used for advanced compression 
+************
+
+gzip ----- used for only file compression 
+
+command ----- tar myfile.tar f1 
+
+-cvf ----compressed verbose file/folder
+
+-xvf ---- extract verbose file/folder
+------------------------------------------------------------------------------
+
+procedure for tar compression
+*****************************
+
+touch f1 f2 f3 f4 ----------  for creating files
+
+vi f1 
+ 
+	jfls
+	sldkdfj
+	dfkkjs
+	fdls
+
+cp f1 f2
+cp f1 f3
+cp f1 f4
+
+ls -l -------- shows the size 
+
+ls -lh -------- shows in kb's
+
+tar -cvf myfile1.tar f*
+	f1
+	f2
+	f3
+	f4
+
+ls -l ---- shows again the size  (myfile1.tar)
+
+gzip myfile1.tar
+ 
+ls -l  ------(myfile1.tar.gz)
+
+rm f*
+
+ls ----- shows (myfile1.tar.gz)
+
+tar -xvf myfile1.tar.gz--------- shows all the extracted files
+
+ls ------- shows all files
+
+	f1 f2 f3 f4 myfile1.tar.gz
+
+
+
+
+
+
+mkdir d1 d2 d3 d4 ------- for creating directories
+
+cp f* d1
+cp f* d2
+cp f* d3
+cp f* d4
+
+tree ----- shows in a tree format
+
+tar -cvf myfile2.tar f* d* ---------- compresses all files and directories
+
+ls -l -------- shows all files and dir ( myfile2.tar) 
+
+gzip myfile2.tar
+
+ls -l --------- shows all the files and dir  (myfile2.tar.gz)
+
+ls -lh ---------- shows in kb's 
+
+
+rm f* 
+
+rm -rf d* 
+
+ls --------- shows these files (myfile1.tar.gz  myfile2.tar.gz)
+
+mkdir sujan1
+
+cp myfile2.tar.gz sujan1/
+
+cd sujan1/
+
+ls -------- shows  (myfile2.tar.gz)
+
+tar -xvf myfile2.tar.gz ------  extracts all the files and dir 
+
+ls ----- shows all files and dir 
+
+
+--------------------------------------------------------------------------------------------------------------
+
+User management in Linux
+************************ 
+
+1. Root user ------ who has full acess i.e read, write and execute
+
+2. Normal user ---- will not have full access 
+
+# ---- It is a root user 
+
+$ ----- It is a normal user
+
+
+
+
+Normal user can take the previleges(read, write and execute) of root user using ---sudo command ---
+
+apt install git ---- by root user 
+
+sudo apt install git --- by normal user 
+
+normal user should be in sudo group then only it works 
+
+
+
+cat /etc/shadow | grep "username" ------ It will show the particular user
+
+cat /etc/os-release ----- used to show what type of os you are using
+
+
+---------------------------------------------------------------------------------------------
+
+
+How can we create a user 
+************************
+
+useradd username  ---- you should set the password separately ---- It won't create  /home with same name   ------ useradd username --- it will create the directory
+
+eg: useradd Raghav
+    passwd Raghav-----then set the password
+
+root@Srujan21:~# id Raghav
+uid=1004(Raghav) ------user id 
+gid=1004(Raghav) ------ primary or default group of user (Raghav)
+ groups=1004(Raghav)----- secondary group of user (Raghav)
+
+
+
+
+adduser username ----- you can create a password --- can create /home dir with same name
+
+users list are seen/stored in --- cat /etc/shadow
+
+To list all users on the system ----- cat /etc/passwd -----> It shows all users 
+
+we can also see whether the user exists or not by checking ----id username
+
+groups are seen/stored in --- cat /etc/gshadow 
+
+groupadd groupname (for creating groups)
+
+
+
+-----------------------------------------------------------------------------------------------
+
+
+When you create a new normal user with the same name a directory is created in ----/home--> when you use adduser command
+
+/root ---- home for the root user 
+/home --- home for the normal users
+
+ls -ld username ---- is used to show the specific directory
+
+
+when ever you create
+* file 
+* dir
+* link 
+
+They have two types of owners -----userowner and  groupowner
+
+drwxr-x--- 5 srujan srujan 4096 Feb 24 08:19 srujan
+		|	|
+	(userowner) (groupowner)
+
+
+we can change userowner and groupowner  by using command ----chown
+
+we can add a group to the groupowner ---- usermod/gpasswd -aG(for all groups) group1 linuxuser1------
+
+usermod -aG groupname username --- used to add group to secondary groups for the username
+
+To change the primary group of the user --------usermod -g groupname username
+ 
+groupdel username(groupname) ---> If will delete the group permanently in user and group also
+
+gpasswd -d username groupname ------  used to delete the group  in the secondary group
+
+
+userdel -r username -------used to delete the user permanently in the home directory also 
+
+If we want to delete a user ---- userdel username ( It deletes the user but doesnot delete the user in home directory )
+
+
+-----------------------------------------------------------------------------------------------------------
+
+chown command 
+*************
+
+
+ -rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:15 f1
+		|	   |
+		|	   |
+
+	  (user owner)	 (group owner)    
+
+If a normal user wants  to use sudo command he should be in sudo group
+	usermod -aG sudo Chaitanya
+
+
+root@Srujan21:~# usermod -aG sudo Chaitanya
+
+root@Srujan21:~# id chaitanya
+
+uid=1006(chaitanya) gid=1006(chaitanya) groups=1006(chaitanya),27(sudo),100(users)
+
+
+
+chaitanya@Srujan21:/root$ cd
+chaitanya@Srujan21:~$ pwd
+/home/chaitanya
+chaitanya@Srujan21:~$ ls -l
+total 0
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:15 f1
+
+
+To change user owner use -------- sudo chown root f1
+
+
+chaitanya@Srujan21:~$ sudo chown root f1
+[sudo] password for chaitanya:
+chaitanya@Srujan21:~$ ls -l
+total 0
+-rw-rw-r-- 1 root chaitanya 0 Mar 11 09:15 f1
+
+---------------------------------------------------------
+
+To change owners there are 3 categories
+
+1. changing only userowner--------- chown username filename/dir
+
+
+	root@Srujan21:~# mkdir d1
+	root@Srujan21:~# touch f1
+	root@Srujan21:~# ls
+
+	d1  f1
+
+	root@Srujan21:~# ls -l
+	total 4
+	drwxr-xr-x 2 root root 4096 Mar 24 15:24 d1
+	-rw-r--r-- 1 root root    0 Mar 24 15:24 f1
+
+	root@Srujan21:~# chown srujan d1
+	root@Srujan21:~# ls -l
+	total 4
+	drwxr-xr-x 2 srujan:root 4096 Mar 24 15:24 d1
+	-rw-r--r-- 1 root   root    0 Mar 24 15:24 f1
+	
+
+2. changing only groupowner ---- chown :username filename/dir
+
+
+	root@Srujan21:~# chown :varshini d1
+	root@Srujan21:~# ls -l
+	total 4
+	drwxr-xr-x 2 srujan:varshini 4096 Mar 24 15:24 d1
+	-rw-r--r-- 1 root   root        0 Mar 24 15:24 f1
+
+
+3. both owners  ------chown username:username filename or dir 
+
+
+
+	root@Srujan21:~# chown srujan:vaseem f1
+	root@Srujan21:~# ls -l
+	total 4
+	drwxr-xr-x 2 srujan varshini 4096 Mar 24 15:24 d1
+	-rw-r--r-- 1 srujan vaseem      0 Mar 24 15:24 f1
+
+
+ 4. chown -R username:username d1 (for non-empty dir)------ changes all files also
+-------------------------------------------------------------------------
+
+eg:
+
+
+mkdir d1
+
+cd d1
+
+touch f{1..5}
+
+cd 
+
+tree d1
+	d1
+	 *f1
+	 *f2
+	 *f3
+	 *f4
+	 *f5
+chaitanya@Srujan21:~$ ls -l
+total 4
+drwxrwxr-x 2 chaitanya chaitanya 4096 Mar 11 09:39 d1
+-rw-rw-r-- 1 root      chaitanya    0 Mar 11 09:15 f1
+
+chaitanya@Srujan21:~$ sudo chown root:root d1
+chaitanya@Srujan21:~$ ls -l
+total 4
+drwxrwxr-x 2 root root      4096 Mar 11 09:39 d1
+-rw-rw-r-- 1 root chaitanya    0 Mar 11 09:15 f1
+
+
+chaitanya@Srujan21:~$ cd d1
+chaitanya@Srujan21:~/d1$ ls -l
+total 0
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f1
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f2
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f3
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f4
+-rw-rw-r-- 1 chaitanya chaitanya 0 Mar 11 09:39 f5
+
+
+------------------------------------------------------------------------------------------------------------
+
+chmod command 
+*************
+
+root@Srujan21:~# ls -l
+total 4
+drwxr-xr-x 2 root root 4096 Mar 11 12:05 d1-------directory
+-rw-r--r-- 1 root root    0 Mar 11 12:05 f1--------file
+
+
+drwxr-xr-x------rwx-->user permissions----u
+		r-x--> group permissions---g
+		r-x--> other permissions----o
+
+
+
+
+-------------------------------------------------------------------
+For adding 
+
+
+mkdir d1 
+
+ls -l 
+
+drwxr-xr-x 2 root root 4096 Mar 11 12:05 d1-------directory
+
+chmod g+w d1
+
+ls -l 
+
+drwxr(w)xr-x 2 root root 4096 Mar 11 12:05 d1-------directory
+
+chmog o+w d1
+
+drwxr-xr(w)x 2 root root 4096 Mar 11 12:05 d1-------directory
+
+---------------------------------------------------------------------
+
+For deleting
+
+chmod o-rwx d1
+
+drwxr-x--- 2 root root 4096 Mar 11 12:05 d1-------directory
+
+chmod u-rw d1 
+
+d(--)xr-xr-x 2 root root 4096 Mar 11 12:05 d1-------directory
+
+--------------------------------------------------------------------------
+
+For all deleting x
+
+chmod a-x d1
+
+drw(-)r-(-)r-(-) 2 root root 4096 Mar 11 12:05 d1-------directory
+
+--------------------------------------------------------------------------
+
+For all inserting w in user,group,other 
+
+chmod a-r,g+w,o+w d1 
+
+d(-)w-(-)w-(-)w- 2 root root 4096 Mar 11 12:05 d1-------directory
+
+--------------------------------------------------------------------------
+
+Numeric Format
+**************
+
+read =4
+write= 2
+execute =1
+all = -a
+default for directory --755
+default for file  ---- 644 
+
+eg;     rwx-----7
+	rwx---- 7
+	rwx------7
+
+eg2:   --x-w-r-x --- 125
+
+eg3:  r--------  ------> 400 
+	chmod 400 filename or dir
+
+eg4:  --------x ------> 001 
+	chmod 001 filename or dir
+e3295f8fa2c
+
+------------------------------------------------------------------------------
+
+
+* df -h ------- used to check the os storage 
+
+* du d1 -------- used to check specific dir 
+	o/p ----> 4   d1
+
+* du -h d1 ------ used to check the dir in kb's 
+	o/p -----> 4.0K   d1
+
+* top command --------- used to see the running process in Linux os 
+	To stop the process ---- use kill id 
+
+* userdel username ----- used to delete the user but doesn't deletes the directory
+
+	If we use userdel -r username ------It deletes the whole user and directory
+
+------------------------------------------------------------------------------------------
+Networking and Storage commands 
+*********************************
+
+
+Storage management commands
+***************************
+
+* mount --->is used to attach a file system (like a hard disk, partition, or external drive) to a specific directory (mount point) in the existing file system hierarchy.
+
+
+* lsblk ---> lists information about block devices (like hard drives, SSDs, partitions, USBs, and EBS volumes), in a tree-like format.
+
+
+* mkfs(make filesystem)--->used in Linux to format a disk or partition with a specific file system like ext4, xfs, or vfat
+
+
+* free -h ------ used to check the RAM 
+
+
+* df -h ------- used to check the os storage 
+
+
+
+***************************************************
+
+* du fil/dir -------- used to check specific dir/file that show size in total
+	o/p ----> 4   d1
+
+* du -h d1 ------ used to check the dir in kb's 
+	o/p -----> 4.0K   d1
+
+* du -sh dir/f ---- used to see the size of the dir or file
+
+****************************************************
+
+* top command --------- used to see the running process in Linux os 
+	To stop the process ---- use kill id 
+
+* htop ---> used to see the running process more attractive better than top command
+
+___________________________________________________________________________________________
+
+Network commands
+****************
+
+* If we want to check the IP address of your system or any server use --- ifconfig, ip addr show
+
+1233.0.0.1
+
+* ip addr show ------ used to see the ip address
+
+* ifconfig -------used to see the ip address  |
+   
+* ping --- we can check the internet connectivity
+	ping www.google.com 
+	
+	* apt install net-tools ---> used to install ping command
+   
+
+* traceroute ---- used to show the path that packets take from your system to a destination host (like a website or server). It helps identify network delays, failures, or routing issues.
+
+	traceroute google.com --> is a command usage
+
+* dig (domain informaion grafer) ----- used to check the records / used for querying DNS (Domain Name System) servers. It helps you troubleshoot domain name resolution and check DNS records like A, MX, CNAME, NS, and more.
+	* sudo apt install dnsutils ---> for installing the dig command
+	
+	1.shows the actual response
+	2.Record type
+
+	dig google.com --> is a command usage
+
+
+* curl(client URL) domainname ----------->To see wheter it is in html file or not /  is used to make HTTP requests (and other protocols like FTP, SMTP, etc.) from the command line. It's widely used for testing APIs, downloading files, and checking network endpoints.
+
+
+
+--------------------------------------------------------------------------------------------
+
+chage ---->is used to view or set password aging policies for a user. It allows administrators to enforce password expiry, change intervals, and account expiration, which is important for security compliance.
+
+* chage -l username ---- to change the password 
+
+	chage -M 30 username ---> set password to expire every 30 days
+
+	chage -m 10 username --> Require a minimum of 7 days between password changes
+	
+	chage -W 10 username --> Warn the user 10 days before expiry
+-----------------------------------------------------
+
+* scp (security copy command) or WinSCP tool 
+
+
+* locate ---> fast file finder in Linux
+
+	apt install plocate -y --- It installs the locate command 
+
+	locate google.com --> locate the file 
+

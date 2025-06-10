@@ -1,0 +1,97 @@
+Networking and Storage commands 
+*********************************
+
+
+Storage management commands
+***************************
+
+* mount --->is used to attach a file system (like a hard disk, partition, or external drive) to a specific directory (mount point) in the existing file system hierarchy.
+
+
+* lsblk ---> lists information about block devices (like hard drives, SSDs, partitions, USBs, and EBS volumes), in a tree-like format.
+
+
+* mkfs(make filesystem)--->used in Linux to format a disk or partition with a specific file system like ext4, xfs, or vfat
+
+
+* free -h ------ used to check the RAM 
+
+
+* df -h ------- used to check the os storage 
+
+
+
+***************************************************
+
+* du fil/dir -------- used to check specific dir/file that show size in total
+	o/p ----> 4   d1
+
+* du -h d1 ------ used to check the dir in kb's 
+	o/p -----> 4.0K   d1
+
+* du -sh dir/f ---- used to see the size of the dir or file
+
+****************************************************
+
+* top command --------- used to see the running process in Linux os 
+	To stop the process ---- use kill id 
+
+* htop ---> used to see the running process more attractive better than top command
+
+___________________________________________________________________________________________
+
+Network commands
+****************
+
+* If we want to check the IP address of your system or any server use --- ifconfig, ip addr show
+
+1233.0.0.1
+
+* ip addr show ------ used to see the ip address
+
+* ifconfig -------used to see the ip address  |
+   
+* ping --- we can check the internet connectivity
+	ping www.google.com 
+	
+	* apt install net-tools ---> used to install ping command
+   
+
+* traceroute ---- used to show the path that packets take from your system to a destination host (like a website or server). It helps identify network delays, failures, or routing issues.
+
+	traceroute google.com --> is a command usage
+
+* dig (domain informaion grafer) ----- used to check the records / used for querying DNS (Domain Name System) servers. It helps you troubleshoot domain name resolution and check DNS records like A, MX, CNAME, NS, and more.
+	* sudo apt install dnsutils ---> for installing the dig command
+	
+	1.shows the actual response
+	2.Record type
+
+	dig google.com --> is a command usage
+
+
+* curl(client URL) domainname ----------->To see wheter it is in html file or not /  is used to make HTTP requests (and other protocols like FTP, SMTP, etc.) from the command line. It's widely used for testing APIs, downloading files, and checking network endpoints.
+
+
+
+--------------------------------------------------------------------------------------------
+
+chage ---->is used to view or set password aging policies for a user. It allows administrators to enforce password expiry, change intervals, and account expiration, which is important for security compliance.
+
+* chage -l username ---- to change the password 
+
+	chage -M 30 username ---> set password to expire every 30 days
+
+	chage -m 10 username --> Require a minimum of 7 days between password changes
+	
+	chage -W 10 username --> Warn the user 10 days before expiry
+-----------------------------------------------------
+
+* scp (security copy command) or WinSCP tool 
+
+
+* locate ---> fast file finder in Linux
+
+	apt install plocate -y --- It installs the locate command 
+
+	locate google.com --> locate the file 

@@ -1,0 +1,93 @@
+chmod command 
+*************
+
+root@Srujan21:~# ls -l
+total 4
+drwxr-xr-x 2 root root 4096 Mar 11 12:05 d1-------directory
+-rw-r--r-- 1 root root    0 Mar 11 12:05 f1--------file
+
+
+drwxr-xr-x------rwx-->user permissions----u
+		r-x--> group permissions---g
+		r-x--> other permissions----o
+
+
+
+
+-------------------------------------------------------------------
+For adding 
+
+
+mkdir d1 
+
+ls -l 
+
+drwxr-xr-x 2 root root 4096 Mar 11 12:05 d1-------directory
+
+chmod g+w d1
+
+ls -l 
+
+drwxr(w)xr-x 2 root root 4096 Mar 11 12:05 d1-------directory
+
+chmod o+w d1
+
+drwxr-xr(w)x 2 root root 4096 Mar 11 12:05 d1-------directory
+
+---------------------------------------------------------------------
+
+For deleting
+
+chmod o-rwx d1
+
+drwxr-x--- 2 root root 4096 Mar 11 12:05 d1-------directory
+
+chmod u-rw d1 
+
+d(--)xr-xr-x 2 root root 4096 Mar 11 12:05 d1-------directory
+
+--------------------------------------------------------------------------
+
+For all deleting x
+
+chmod a-x d1
+
+drw(-)r-(-)r-(-) 2 root root 4096 Mar 11 12:05 d1-------directory
+
+--------------------------------------------------------------------------
+
+For all inserting w in user,group,other 
+
+chmod a-r,g+w,o+w d1 
+
+d(-)w-(-)w-(-)w- 2 root root 4096 Mar 11 12:05 d1-------directory
+
+--------------------------------------------------------------------------
+
+Numeric Format
+**************
+
+read =4
+write= 2
+execute =1
+all = -a
+default for directory --755
+default for file  ---- 644 
+
+eg;     rwx-----7
+	rwx---- 7
+	rwx------7
+
+eg2:   --x-w-r-x --- 125
+
+eg3:  r--------  ------> 400 
+	chmod 400 filename or dir
+
+eg4:  --------x ------> 001 
+	chmod 001 filename or dir
+e3295f8fa2c
+
+------------------------------------------------------------------------------
+
+
+
