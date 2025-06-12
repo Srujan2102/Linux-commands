@@ -79,6 +79,7 @@ pwd ----- present current working directory
 --------------------------------------------------------------------------
 
 move command ------ used to move files and renaming files  (mv)command
+If i have 100 files and i want to copy data from f1 to f2..f100 ---> cat f1 | tee f{2..100}
 
 
 
